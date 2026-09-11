@@ -20,7 +20,7 @@ struct ControlDial: View {
                     let w = geo.size.width
                     let cell = w / 3
                     ZStack {
-                        dialButton("heart", fill: engine.isFavourite, systemFill: engine.isFavourite ? "heart.fill" : "heart") {
+                        dialButton("heart.fill", fill: engine.isFavourite) {
                             engine.setFavourite(!engine.isFavourite)
                         }
                         .frame(width: cell, height: cell)

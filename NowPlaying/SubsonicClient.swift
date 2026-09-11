@@ -38,23 +38,25 @@ struct ServerConfig: Codable, Equatable {
 }
 
 struct SubsonicResponse<T: Codable>: Codable {
-    struct Status: Codable {
-        let status: String
-        let version: String?
-        let openSubsonicExtensions: [OpenSubsonicExtension]?
-        var error: SubsonicAPIError?
-        let type: String?
-        let serverVersion: String?
-    }
-    struct OpenSubsonicExtension: Codable {
-        let name: String
-        let versions: [Int]
-    }
-    struct SubsonicAPIError: Codable {
-        let code: Int
-        let message: String?
-    }
-    let subsonicResponse: Status
+    var subsonicResponse: T
+}
+
+/// Status fields present in every subsonic-response envelope.
+struct SubsonicStatus: Codable {
+    let status: String
+    let version: String?
+    let openSubsonicExtensions: [OpenSubsonicExtension]?
+    var error: SubsonicAPIError?
+    let type: String?
+    let serverVersion: String?
+}
+struct OpenSubsonicExtension: Codable {
+    let name: String
+    let versions: [Int]
+}
+struct SubsonicAPIError: Codable {
+    let code: Int
+    let message: String?
 }
 
 /// Subsonic API client — salt + md5 token auth, async/await URLSession, direct streaming.
@@ -127,7 +129,8 @@ final class SubsonicClient: @unchecked Sendable {
         } catch {
             throw SubsonicError.decoding
         }
-        if let err = decoded.subsonicResponse.error {
+        // Check the API-level error/status first, using a plain status envelope.
+        if let status = try? JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data).subsonicResponse, let err = status.error {
             if err.code == 40 || err.code == 50 { throw SubsonicError.authFailed }
             throw SubsonicError.apiError(err.message ?? "Server error \(err.code)")
         }
@@ -142,12 +145,11 @@ final class SubsonicClient: @unchecked Sendable {
     }
 
     func ping() async throws -> PingResult {
-        struct P: Codable { let subsonicResponse: SubsonicResponse<Empty>.Status }
         let url = try endpoint("ping")
         let data: Data
         do { (data, _) = try await session.data(from: url) } catch { throw SubsonicError.serverUnreachable }
-        let decoded: SubsonicResponse<Empty>
-        do { decoded = try JSONDecoder().decode(SubsonicResponse<Empty>.self, from: data) } catch { throw SubsonicError.decoding }
+        let decoded: SubsonicResponse<SubsonicStatus>
+        do { decoded = try JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data) } catch { throw SubsonicError.decoding }
         if let err = decoded.subsonicResponse.error {
             if err.code == 40 || err.code == 50 { throw SubsonicError.authFailed }
             throw SubsonicError.apiError(err.message ?? "Server error \(err.code)")
