@@ -69,6 +69,8 @@ final class SubsonicClient: @unchecked Sendable {
         let s = URLSessionConfiguration.default
         s.timeoutIntervalForRequest = 15
         s.waitsForConnectivity = false
+        // Reverse proxies (Cloudflare) block non-browser User-Agents with 403 + HTML page.
+        s.httpAdditionalHeaders = ["User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"]
         self.session = URLSession(configuration: s)
     }
 
