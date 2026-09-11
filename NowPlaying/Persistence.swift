@@ -5,7 +5,7 @@ struct PlayerSnapshot: Codable, Equatable {
     var currentTrackId: String?
     var positionSec: Double
     var queueIds: [String]
-    var repeat: Bool
+    var repeatOne: Bool
     var shuffle: Bool
     var favourite: Bool
     var collectionName: String

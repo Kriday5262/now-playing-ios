@@ -267,8 +267,8 @@ final class PlayerEngine: NSObject, ObservableObject {
         guard let url = client.coverArtURL(id: coverID, size: 512) else { return }
         Task {
             guard let (data, _) = try? await URLSession.shared.data(from: url),
-                  let image = UIImage(data: data),
-                  let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image } else { return }
+                  let image = UIImage(data: data) else { return }
+            let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image }
             var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [:]
             info[MPMediaItemPropertyArtwork] = artwork
             MPNowPlayingInfoCenter.default().nowPlayingInfo = info
@@ -310,7 +310,7 @@ final class PlayerEngine: NSObject, ObservableObject {
         client: SubsonicClient
     ) {
         configure(client: client)
-        repeatOne = snap.repeat
+        repeatOne = snap.repeatOne
         shuffle = snap.shuffle
         collectionName = snap.collectionName
         isFavourite = snap.favourite
