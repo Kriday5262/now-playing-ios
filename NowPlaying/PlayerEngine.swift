@@ -108,7 +108,7 @@ final class PlayerEngine: NSObject, ObservableObject {
         if seekTo > 0 {
             let target = CMTime(seconds: seekTo, preferredTimescale: 600)
             if autoplay {
-                player.seek(to: target, toleranceBefore: .zero, toleranceAfter: .seconds(2)) { [weak self] _ in
+                player.seek(to: target, toleranceBefore: .zero, toleranceAfter: CMTime(seconds: 2, preferredTimescale: 600)) { [weak self] _ in
                     self?.player.play()
                 }
             } else {
@@ -167,7 +167,7 @@ final class PlayerEngine: NSObject, ObservableObject {
     }
 
     func seek(to seconds: Double) {
-        player.seek(to: CMTime(seconds: seconds, preferredTimescale: 600), toleranceBefore: .seconds(0.5), toleranceAfter: .seconds(0.5))
+        player.seek(to: CMTime(seconds: seconds, preferredTimescale: 600), toleranceBefore: CMTime(seconds: 0.5, preferredTimescale: 600), toleranceAfter: CMTime(seconds: 0.5, preferredTimescale: 600))
         position = seconds
         persist()
     }
@@ -193,7 +193,11 @@ final class PlayerEngine: NSObject, ObservableObject {
         guard let client, let id = currentTrack?.id else { persist(); return }
         persist()
         Task {
-            try? on ? client.star(id: id) : client.unstar(id: id)
+            if on {
+                try? await client.star(id: id)
+            } else {
+                try? await client.unstar(id: id)
+            }
         }
     }
 
@@ -282,7 +286,7 @@ final class PlayerEngine: NSObject, ObservableObject {
             currentTrackId: currentTrack?.id,
             positionSec: position,
             queueIds: queue.map { $0.id },
-            repeat: repeatOne,
+            repeatOne: repeatOne,
             shuffle: shuffle,
             favourite: isFavourite,
             collectionName: collectionName
