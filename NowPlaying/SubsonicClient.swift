@@ -100,7 +100,12 @@ final class SubsonicClient: @unchecked Sendable {
 
     func endpoint(_ path: String, _ extra: [URLQueryItem] = []) throws -> URL {
         guard var comps = URLComponents(string: config.url) else { throw SubsonicError.badURL }
-        comps.path = (comps.path.isEmpty ? "" : comps.path) + "/rest/" + path
+        // Strip any trailing slash(es) from the base path so we never build
+        // "//rest/ping" — Navidrome 302-redirects that to its HTML web app,
+        // which the app can't decode.
+        var base = comps.path
+        while base.hasSuffix("/") { base.removeLast() }
+        comps.path = base + "/rest/" + path
         var items = baseParams()
         items.append(contentsOf: extra)
         comps.queryItems = items
