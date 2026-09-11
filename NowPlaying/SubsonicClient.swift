@@ -7,7 +7,7 @@ enum SubsonicError: LocalizedError {
     case authFailed
     case apiError(String)
     case emptyResults
-    case decoding
+    case decoding(String?)
 
     var errorDescription: String? {
         switch self {
@@ -16,7 +16,9 @@ enum SubsonicError: LocalizedError {
         case .authFailed: return "Sign-in failed. Check the username and password."
         case .apiError(let m): return m
         case .emptyResults: return "No results."
-        case .decoding: return "The server sent data this app could not read."
+        case .decoding(let detail):
+            return detail.map { "The server sent data this app could not read. [\($0)]" }
+                ?? "The server sent data this app could not read."
         }
     }
 }
@@ -139,10 +141,29 @@ final class SubsonicClient: @unchecked Sendable {
         let decoded: SubsonicResponse<T>
         do {
             decoded = try JSONDecoder().decode(SubsonicResponse<T>.self, from: data)
-        } catch {
-            throw SubsonicError.decoding
+        } catch let e {
+            throw SubsonicError.decoding(Self.decodeDetail(e, data: data))
         }
         return decoded.subsonicResponse
+    }
+
+    /// Human-readable decode diagnostics: the Swift error plus a snippet of what arrived.
+    static func decodeDetail(_ e: Error, data: Data) -> String? {
+        let snippet: String
+        if let s = String(data: data.prefix(160), encoding: .utf8) {
+            let clean = s.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespaces)
+            snippet = " body: \(clean.prefix(140))…"
+        } else { snippet = " (non-UTF8 body)" }
+        let msg = (e as? DecodingError).map { de -> String in
+            switch de {
+            case .typeMismatch(let t, let c): return "type mismatch \(t) at \(c.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .valueNotFound(_, let c): return "value missing at \(c.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .keyNotFound(let k, let c): return "key '\(k.stringValue)' missing at \(c.codingPath.map(\.stringValue).joined(separator: "."))"
+            case .dataCorrupted(let c): return "corrupted data \(c.debugDescription)"
+            @unknown default: return "decode error"
+            }
+        }
+        return (msg ?? String(describing: e)) + snippet
     }
 
     // MARK: - API calls
@@ -157,7 +178,7 @@ final class SubsonicClient: @unchecked Sendable {
         let data: Data
         do { (data, _) = try await session.data(from: url) } catch { throw SubsonicError.serverUnreachable }
         let decoded: SubsonicResponse<SubsonicStatus>
-        do { decoded = try JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data) } catch { throw SubsonicError.decoding }
+        do { decoded = try JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data) } catch let e { throw SubsonicError.decoding(Self.decodeDetail(e, data: data)) }
         if let err = decoded.subsonicResponse.error {
             if err.code == 40 || err.code == 50 { throw SubsonicError.authFailed }
             throw SubsonicError.apiError(err.message ?? "Server error \(err.code)")
