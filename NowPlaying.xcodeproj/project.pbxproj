@@ -95,7 +95,7 @@
 			);
 			name = Sources;
 			sourceTree = "<group>";
-		}};
+		};
 		2B7FD7CAF67125B2BBD2E39A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +188,7 @@
 				AF770FA63E56FB3D20FFED04 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-		}};
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
