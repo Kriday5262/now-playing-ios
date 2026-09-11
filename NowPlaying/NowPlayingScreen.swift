@@ -62,7 +62,7 @@ struct NowPlayingScreen: View {
                 }
                 .accessibilityLabel("Settings for \(app.server.name)")
                 Text("Now Playing")
-                    .font(.system(size: 24, weight: .bold, design: .condensed))
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundStyle(Theme.fg)
                     .lineLimit(1)
             }
@@ -114,7 +114,7 @@ struct NowPlayingScreen: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(currentTrack?.title ?? "Nothing queued")
-                        .font(.system(size: 20, weight: .bold, design: .condensed))
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
                         .foregroundStyle(Theme.fg)
                         .lineLimit(1)
                     // Rotating meta line (2.8 s cadence, fade) — one a11y element.

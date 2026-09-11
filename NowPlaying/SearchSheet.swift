@@ -88,7 +88,7 @@ struct SearchSheet: View {
     private func group(_ title: String, @ViewBuilder content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
-                .font(.system(size: 12, weight: .bold, design: .condensed))
+                .font(.system(size: 12, weight: .bold, design: .rounded))
                 .tracking(1.8)
                 .textCase(.uppercase)
                 .foregroundStyle(Theme.cream)
@@ -319,7 +319,7 @@ struct EmptyState: View {
                 .foregroundStyle(Theme.cream)
                 .frame(width: 56, height: 56)
                 .background(Circle().fill(Theme.muted))
-            Text(title).font(.system(size: 20, weight: .bold, design: .condensed)).foregroundStyle(Theme.fg)
+            Text(title).font(.system(size: 20, weight: .bold, design: .rounded)).foregroundStyle(Theme.fg)
             Text(text).font(.system(size: 13)).foregroundStyle(Color.themeMutedFg)
                 .multilineTextAlignment(.center)
         }

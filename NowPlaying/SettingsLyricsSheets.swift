@@ -202,7 +202,7 @@ struct LyricsSheet: View {
                     let lines = l.lines
                     ForEach(Array(lines.enumerated()), id: \.offset) { idx, line in
                         Text(line.1)
-                            .font(.system(size: 22, weight: .bold, design: .condensed))
+                            .font(.system(size: 22, weight: .bold, design: .rounded))
                             .foregroundStyle(l.isSynced && idx == activeLine ? Theme.cream : Color.themeMutedFg)
                             .multilineTextAlignment(.center)
                             .id(idx)

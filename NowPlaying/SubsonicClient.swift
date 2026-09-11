@@ -169,7 +169,7 @@ final class SubsonicClient: @unchecked Sendable {
 
     /// Universal search: songs + albums + artists, grouped by the caller.
     func search3(_ query: String, limit: Int = 30) async throws -> SearchResult {
-        let r: SearchResult = try request("search3", [
+        let r: SearchResult = try await request("search3", [
             .init(name: "query", value: query),
             .init(name: "songCount", value: String(limit)),
             .init(name: "albumCount", value: "20"),
@@ -180,12 +180,14 @@ final class SubsonicClient: @unchecked Sendable {
 
     func getAlbum(id: String) async throws -> Album {
         struct W: Codable { let album: Album }
-        return try request(W.self, "getAlbum", [.init(name: "id", value: id)]).album
+        let w: W = try await request("getAlbum", [.init(name: "id", value: id)])
+        return w.album
     }
 
     func getArtist(id: String) async throws -> Artist {
         struct W: Codable { let artist: Artist }
-        return try request(W.self, "getArtist", [.init(name: "id", value: id)]).artist
+        let w: W = try await request("getArtist", [.init(name: "id", value: id)])
+        return w.artist
     }
 
     func getRandomSongs(genre: String? = nil, count: Int = 50) async throws -> [Song] {
@@ -193,29 +195,33 @@ final class SubsonicClient: @unchecked Sendable {
         struct SongList: Codable { let song: [Song] }
         var extra: [URLQueryItem] = [.init(name: "size", value: String(count))]
         if let genre { extra.append(.init(name: "genre", value: genre)) }
-        return try request(W.self, "getRandomSongs", extra).randomSongs.song
+        let w: W = try await request("getRandomSongs", extra)
+        return w.randomSongs.song
     }
 
     func getPlaylists() async throws -> [Playlist] {
         struct W: Codable { let playlists: PlaylistList }
         struct PlaylistList: Codable { let playlist: [Playlist] }
-        return try request(W.self, "getPlaylists").playlists.playlist
+        let w: W = try await request("getPlaylists")
+        return w.playlists.playlist
     }
 
     func getPlaylist(id: String) async throws -> Playlist {
         struct W: Codable { let playlist: Playlist }
-        return try request(W.self, "getPlaylist", [.init(name: "id", value: id)]).playlist
+        let w: W = try await request("getPlaylist", [.init(name: "id", value: id)])
+        return w.playlist
     }
 
-    func star(id: String) async throws { let _: Empty = try request("star", idParams(id)) }
-    func unstar(id: String) async throws { let _: Empty = try request("unstar", idParams(id)) }
+    func star(id: String) async throws { let _: Empty = try await request("star", idParams(id)) }
+    func unstar(id: String) async throws { let _: Empty = try await request("unstar", idParams(id)) }
 
     private func idParams(_ id: String) -> [URLQueryItem] { [.init(name: "id", value: id)] }
 
     func genres() async throws -> [MusicGenre] {
         struct W: Codable { let genres: GenreList }
         struct GenreList: Codable { let genre: [MusicGenre] }
-        return try request(W.self, "getGenres").genres.genre
+        let w: W = try await request("getGenres")
+        return w.genres.genre
     }
 
     /// OpenSubsonic lyrics-by-song (Navidrome serves .lrc sidecars through this).
@@ -250,7 +256,7 @@ final class SubsonicClient: @unchecked Sendable {
     func getLyricsBySongId(id: String) async throws -> LyricsResult? {
         struct W: Codable { let lyricsList: LyricsList }
         struct LyricsList: Codable { let structuredLyrics: [LyricsResult]? }
-        let wrapper: W = try request("getLyricsBySongId", [.init(name: "id", value: id)])
+        let wrapper: W = try await request("getLyricsBySongId", [.init(name: "id", value: id)])
         if let l = wrapper.lyricsList.structuredLyrics?.first { return l }
         return nil
     }

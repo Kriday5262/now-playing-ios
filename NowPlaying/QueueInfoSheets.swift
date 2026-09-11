@@ -101,7 +101,7 @@ struct InfoSheet: View {
                             ArtThumb(url: nil, sample: AppModel.sampleArt(for: t))
                                 .frame(width: 88, height: 88)
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(t.title).font(.system(size: 22, weight: .bold, design: .condensed)).lineLimit(2).foregroundStyle(Theme.fg)
+                                Text(t.title).font(.system(size: 22, weight: .bold, design: .rounded)).lineLimit(2).foregroundStyle(Theme.fg)
                                 Text(t.artistName).font(.system(size: 13)).foregroundStyle(Color.themeMutedFg).lineLimit(1)
                             }
                         }
@@ -144,7 +144,7 @@ struct InfoSheet: View {
             ForEach(rows, id: \.0) { label, value in
                 HStack(alignment: .top) {
                     Text(label)
-                        .font(.system(size: 12, weight: .bold, design: .condensed))
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
                         .tracking(1.2)
                         .textCase(.uppercase)
                         .foregroundStyle(Color.themeMutedFg)

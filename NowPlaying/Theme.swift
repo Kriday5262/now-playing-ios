@@ -16,7 +16,7 @@ enum Theme {
     static let fg = Color(red: 0xE5/255, green: 0xE8/255, blue: 0xEB/255)
     static let overlay = Color.black.opacity(0.55)
 
-    static let displayFont = Font.system(size: 24, weight: .bold, design: .condensed)
+    static let displayFont = Font.system(size: 24, weight: .bold, design: .rounded)
     static let monoFont = Font.system(size: 12, weight: .regular, design: .monospaced)
 }
 
