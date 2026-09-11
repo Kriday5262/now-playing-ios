@@ -96,3 +96,6 @@ Assets.xcassets/               app icon + 3 sample albums + composer portrait
   fetch after reconnect; offline launch with a saved snapshot restores paused exactly.
 - Server password is stored in UserDefaults on-device; iCloud backup of it is not
   blocked (add an `exclude` key if you want that).
+---
+## ⚠️ Note on this repo's location
+This project also lives at /media/HIKVISION/Shantanu/Work/NowPlaying/NowPlayingApp on the SmartHub NAS — copy it (or git clone from a remote once pushed) to the Mac.
