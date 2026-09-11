@@ -40,6 +40,8 @@ struct ServerConfig: Codable, Equatable {
 }
 
 struct SubsonicResponse<T: Codable>: Codable {
+    // Server emits kebab-case "subsonic-response".
+    enum CodingKeys: String, CodingKey { case subsonicResponse = "subsonic-response" }
     var subsonicResponse: T
 }
 
