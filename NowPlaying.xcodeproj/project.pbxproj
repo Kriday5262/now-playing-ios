@@ -1,0 +1,321 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 60;
+	objects = {
+/* Begin PBXBuildFile section */
+		1A00022E000001AAAA000002 /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00012E000000AAAA000001 /* AirPlay.swift */; };
+		1A00042E000003AAAA000004 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00032E000002AAAA000003 /* AppModel.swift */; };
+		1A00062E000005AAAA000006 /* ControlDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00052E000004AAAA000005 /* ControlDial.swift */; };
+		1A00082E000007AAAA000008 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00072E000006AAAA000007 /* Models.swift */; };
+		1A000A2E000009AAAA00000A /* NowPlayingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00092E000008AAAA000009 /* NowPlayingApp.swift */; };
+		1A000C2E00000BAAAA00000C /* NowPlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000B2E00000AAAAA00000B /* NowPlayingScreen.swift */; };
+		1A000E2E00000DAAAA00000E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000D2E00000CAAAA00000D /* Persistence.swift */; };
+		1A00102E00000FAAAA000010 /* PlayerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000F2E00000EAAAA00000F /* PlayerEngine.swift */; };
+		1A00122E000011AAAA000012 /* QueueInfoSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00112E000010AAAA000011 /* QueueInfoSheets.swift */; };
+		1A00142E000013AAAA000014 /* SearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00132E000012AAAA000013 /* SearchSheet.swift */; };
+		1A00162E000015AAAA000016 /* SettingsLyricsSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00152E000014AAAA000015 /* SettingsLyricsSheets.swift */; };
+		1A00182E000017AAAA000018 /* SubsonicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00172E000016AAAA000017 /* SubsonicClient.swift */; };
+		1A001A2E000019AAAA00001A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00192E000018AAAA000019 /* Theme.swift */; };
+		1A001E2E00001DAAAA00001E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A001B2E00001AAAAA00001B /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A00012E000000AAAA000001 /* AirPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlay.swift; sourceTree = "<group>"; };
+		1A00032E000002AAAA000003 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		1A00052E000004AAAA000005 /* ControlDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDial.swift; sourceTree = "<group>"; };
+		1A00072E000006AAAA000007 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1A00092E000008AAAA000009 /* NowPlayingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingApp.swift; sourceTree = "<group>"; };
+		1A000B2E00000AAAAA00000B /* NowPlayingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingScreen.swift; sourceTree = "<group>"; };
+		1A000D2E00000CAAAA00000D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1A000F2E00000EAAAA00000F /* PlayerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEngine.swift; sourceTree = "<group>"; };
+		1A00112E000010AAAA000011 /* QueueInfoSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueInfoSheets.swift; sourceTree = "<group>"; };
+		1A00132E000012AAAA000013 /* SearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheet.swift; sourceTree = "<group>"; };
+		1A00152E000014AAAA000015 /* SettingsLyricsSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLyricsSheets.swift; sourceTree = "<group>"; };
+		1A00172E000016AAAA000017 /* SubsonicClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsonicClient.swift; sourceTree = "<group>"; };
+		1A00192E000018AAAA000019 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1A001B2E00001AAAAA00001B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A001C2E00001BAAAA00001C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A00262E000025AAAA000026 /* NowPlaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NowPlaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A002A2E000029AAAA00002A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A002E2E00002DAAAA00002E = {
+			isa = PBXGroup;
+			children = (
+				1A00202E00001FAAAA000020 /* NowPlaying */,
+				1A00232E000022AAAA000023 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A00232E000022AAAA000023 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A00262E000025AAAA000026 /* NowPlaying.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A00202E00001FAAAA000020 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				1A00212E000020AAAA000021 /* Sources */,
+				1A00222E000021AAAA000022 /* Resources */,
+				1A001C2E00001BAAAA00001C /* Info.plist */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		1A00212E000020AAAA000021 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1A00012E000000AAAA000001 /* AirPlay.swift */,
+				1A00032E000002AAAA000003 /* AppModel.swift */,
+				1A00052E000004AAAA000005 /* ControlDial.swift */,
+				1A00072E000006AAAA000007 /* Models.swift */,
+				1A00092E000008AAAA000009 /* NowPlayingApp.swift */,
+				1A000B2E00000AAAAA00000B /* NowPlayingScreen.swift */,
+				1A000D2E00000CAAAA00000D /* Persistence.swift */,
+				1A000F2E00000EAAAA00000F /* PlayerEngine.swift */,
+				1A00112E000010AAAA000011 /* QueueInfoSheets.swift */,
+				1A00132E000012AAAA000013 /* SearchSheet.swift */,
+				1A00152E000014AAAA000015 /* SettingsLyricsSheets.swift */,
+				1A00172E000016AAAA000017 /* SubsonicClient.swift */,
+				1A00192E000018AAAA000019 /* Theme.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		1A00222E000021AAAA000022 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A001B2E00001AAAAA00001B /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A002F2E00002EAAAA00002F /* NowPlaying */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A002B2E00002AAAAA00002B /* Build configuration list for PBXNativeTarget "NowPlaying" */;
+			buildPhases = (
+				1A00282E000027AAAA000028 /* Sources */,
+				1A002A2E000029AAAA00002A /* Frameworks */,
+				1A00292E000028AAAA000029 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = NowPlaying;
+			packageProductDependencies = ();
+			productName = NowPlaying;
+			productReference = 1A00262E000025AAAA000026 /* NowPlaying.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A0000002E0000000000AAAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1A002F2E00002EAAAA00002F = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 1A002B2E00002AAAAA00002B /* Build configuration list for PBXProject "NowPlaying" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A002E2E00002DAAAA00002E;
+			productRefGroup = 1A00232E000022AAAA000023 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A002F2E00002EAAAA00002F /* NowPlaying */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A00292E000028AAAA000029 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A001E2E00001DAAAA00001E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A00282E000027AAAA000028 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A00022E000001AAAA000002 /* AirPlay.swift in Sources */,
+				1A00042E000003AAAA000004 /* AppModel.swift in Sources */,
+				1A00062E000005AAAA000006 /* ControlDial.swift in Sources */,
+				1A00082E000007AAAA000008 /* Models.swift in Sources */,
+				1A000A2E000009AAAA00000A /* NowPlayingApp.swift in Sources */,
+				1A000C2E00000BAAAA00000C /* NowPlayingScreen.swift in Sources */,
+				1A000E2E00000DAAAA00000E /* Persistence.swift in Sources */,
+				1A00102E00000FAAAA000010 /* PlayerEngine.swift in Sources */,
+				1A00122E000011AAAA000012 /* QueueInfoSheets.swift in Sources */,
+				1A00142E000013AAAA000014 /* SearchSheet.swift in Sources */,
+				1A00162E000015AAAA000016 /* SettingsLyricsSheets.swift in Sources */,
+				1A00182E000017AAAA000018 /* SubsonicClient.swift in Sources */,
+				1A001A2E000019AAAA00001A /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A002C2E00002BAAAA00002C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+			};
+			name = Debug;
+		};
+		1A002D2E00002CAAAA00002D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.9;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+			};
+			name = Release;
+		};
+		1A00312E000030AAAA000031 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shantanu.nowplaying;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1A00322E000031AAAA000032 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shantanu.nowplaying;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A002B2E00002AAAAA00002B /* Build configuration list for PBXProject "NowPlaying" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A002C2E00002BAAAA00002C /* Debug */,
+				1A002D2E00002CAAAA00002D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A00332E000032AAAA000033 /* Build configuration list for PBXNativeTarget "NowPlaying" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A00312E000030AAAA000031 /* Debug */,
+				1A00322E000031AAAA000032 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A0000002E0000000000AAAA /* Project object */;
+}
