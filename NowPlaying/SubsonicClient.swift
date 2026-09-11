@@ -123,16 +123,17 @@ final class SubsonicClient: @unchecked Sendable {
         if let http = response as? HTTPURLResponse, http.statusCode == 401 || http.statusCode == 403 {
             throw SubsonicError.authFailed
         }
+        // Check the API-level error/status first, using a plain status envelope,
+        // so a server error isn't masked as a decoding failure.
+        if let status = try? JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data).subsonicResponse, let err = status.error {
+            if err.code == 40 || err.code == 50 { throw SubsonicError.authFailed }
+            throw SubsonicError.apiError(err.message ?? "Server error \(err.code)")
+        }
         let decoded: SubsonicResponse<T>
         do {
             decoded = try JSONDecoder().decode(SubsonicResponse<T>.self, from: data)
         } catch {
             throw SubsonicError.decoding
-        }
-        // Check the API-level error/status first, using a plain status envelope.
-        if let status = try? JSONDecoder().decode(SubsonicResponse<SubsonicStatus>.self, from: data).subsonicResponse, let err = status.error {
-            if err.code == 40 || err.code == 50 { throw SubsonicError.authFailed }
-            throw SubsonicError.apiError(err.message ?? "Server error \(err.code)")
         }
         return decoded.subsonicResponse
     }
