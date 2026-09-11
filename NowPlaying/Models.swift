@@ -2,7 +2,7 @@ import Foundation
 
 /// Decodes a Subsonic date that may arrive as an ISO-8601 string, an epoch
 /// number (seconds or milliseconds), or be absent — Navidrome varies by field.
-enum FlexibleDate: Codable, Equatable {
+enum FlexibleDate: Codable, Equatable, Hashable {
     case date(Date)
 
     init(from decoder: Decoder) throws {
