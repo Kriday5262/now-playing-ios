@@ -237,7 +237,7 @@ struct LyricsSheet: View {
             return
         }
         let client = engine.clientForViews
-        lyrics = try? await client.getLyricsBySongId(id: song.id)
+        lyrics = try? await client?.getLyricsBySongId(id: song.id)
         loaded = true
     }
 }
