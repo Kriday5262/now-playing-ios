@@ -118,7 +118,8 @@ struct NowPlayingScreen: View {
                         .foregroundStyle(Theme.fg)
                         .lineLimit(1)
                     // Rotating meta line (2.8 s cadence, fade) — one a11y element.
-                    Text(metaLines[min(metaIndex, max(metaLines.count - 1, 0))])
+                    // Empty before the queue loads (first render) — safe-subscript.
+                    Text(metaLines.isEmpty ? " " : metaLines[min(metaIndex, metaLines.count - 1)])
                         .font(.system(size: 14))
                         .foregroundStyle(Color.themeMutedFg)
                         .lineLimit(1)
