@@ -309,8 +309,7 @@ struct RemoteArt: View {
             guard let engine = (app.engine),
                   let client = clientOf(engine),
                   let url = client.coverArtURL(id: song.albumId ?? song.id, size: 1024) else { return }
-            let (data, _) = try? await URLSession.shared.data(from: url)
-            if let data, let img = UIImage(data: data) {
+            if let (data, _) = try? await URLSession.shared.data(from: url), let img = UIImage(data: data) {
                 withAnimation(.easeIn(duration: 0.3)) { image = img }
             }
         }
