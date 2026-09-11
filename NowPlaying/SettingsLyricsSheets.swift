@@ -232,10 +232,11 @@ struct LyricsSheet: View {
     private func fetchLyrics() async {
         loaded = false
         lyrics = nil
-        guard let song = engine.currentTrack, let client = engine.clientForViews ?? SubsonicClient(config: app.server) else {
+        guard let song = engine.currentTrack else {
             loaded = true
             return
         }
+        let client = engine.clientForViews
         lyrics = try? await client.getLyricsBySongId(id: song.id)
         loaded = true
     }
